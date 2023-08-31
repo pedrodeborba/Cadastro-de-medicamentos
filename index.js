@@ -77,6 +77,11 @@ app.post('/send', function (req,res){
     })
 });
 
+//Rota para deletar Medicamento
+app.get('/delete:id', function (req,res){
+    Medicamento.destroy({where: {'id': req.params.id}});
+});
+
 app.listen(port, () => {
     console.log(`Servidor rodando em http://localhost:${port}`);
 });
