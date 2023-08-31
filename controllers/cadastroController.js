@@ -1,13 +1,14 @@
 const Usuario = require("../models/usuarioModel");
+const crypto = require('crypto');
 
 function getCadastro(req, res) {
     res.render('cadastro', { erro: null});
 }
 
-function cadastrar(req, res) {
+async function cadastrar (req, res) {
     const email = req.body.email;
-    const senha = req.body.senha;
-    const confirmSenha = req.body.senha;
+    let senha = req.body.senha;
+    const confirmSenha = req.body.confirmSenha;
 
     if (!email || !senha || !confirmSenha) {
         // Campos vazios, renderizar página de cadastro com mensagem de erro
@@ -16,6 +17,19 @@ function cadastrar(req, res) {
         // Senhas não coincidem, renderizar página de cadastro com mensagem de erro
         res.render('cadastro', { erro: 'As senhas não coincidem' });
     } else {
+
+
+        const user = await Usuario.getEmail(email);
+
+
+        if (user) {
+            // Usuário já cadastrado, renderizar página de cadastro com mensagem de erro
+            res.render('cadastro', { erro: 'Email já cadastrado' });
+        }
+
+        senha = await crypto.createHash('md5').update(senha).digest('hex');
+
+
         // Realizar o cadastro
         Usuario.create({ email, senha })
             .then(() => {
