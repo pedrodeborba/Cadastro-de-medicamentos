@@ -1,0 +1,47 @@
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
+
+
+DROP DATABASE IF EXISTS `mydb`;
+CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 ;
+USE `mydb` ;
+
+CREATE TABLE IF NOT EXISTS `mydb`.`usuarios` (
+  id int(11) NOT NULL AUTO_INCREMENT,
+  email varchar(255) DEFAULT NULL,
+  senha varchar(255) DEFAULT NULL,
+  createdAt datetime DEFAULT NULL,
+  updatedAt datetime DEFAULT NULL,
+  PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE IF NOT EXISTS `mydb`.`medicamento` (
+  `idmedicamento` INT NOT NULL AUTO_INCREMENT,
+  `nome` VARCHAR(255) NOT NULL,
+  `indicacao` VARCHAR(255) NOT NULL,
+  `modoUso` VARCHAR(255) NOT NULL,
+  `efeitosColaterais` VARCHAR(255) NOT NULL,
+  `usuario_idusuario` INT NOT NULL,
+  PRIMARY KEY (`idmedicamento`),
+  INDEX `fk_medicamento_usuarios_idx` (`usuario_idusuario`),
+  CONSTRAINT `fk_medicamento_usuarios`
+    FOREIGN KEY (`usuario_idusuario`)
+    REFERENCES `mydb`.`usuarios` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
+)
+ENGINE = InnoDB;
+
+INSERT INTO `mydb`.`usuarios` (`email`, `senha`)
+ VALUES(
+    'pedro-iborba@educar.rs.gov.br', '12345678'
+);
+
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS
