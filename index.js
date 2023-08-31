@@ -1,6 +1,7 @@
-const express = require('express'); //express
+const express = require('express'); 
 const expressLayouts = require('express-ejs-layouts');
-const bodyParser = require ('body-parser'); //body-parser
+const bodyParser = require ('body-parser'); 
+const config = require('./config/config.json');
 
 //Modulos
 const Medicamento = require('./models/medicamentoModel');
@@ -12,7 +13,7 @@ const usuarioController = require("./controllers/usuarioController");
 const cadastroController = require('./controllers/cadastroController');
 
 const app = express();
-const port = 3002;
+const port = config.port;
 
 app.set('view engine', 'ejs');// declarando ejs como tempalte engine
 app.use(expressLayouts);
@@ -41,7 +42,7 @@ app.get('/cadastro' , (req,res) =>{
     cadastroController.getCadastro(req,res);
 });
 
-app.post('/cadastro', (req,res)=>{
+app.post('/cadastro', (req, res) => {
     cadastroController.cadastrar(req,res);
 })
 
