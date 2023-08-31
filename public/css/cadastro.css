@@ -1,0 +1,67 @@
+
+.cadastro-button {
+    background-color: #6A5ACD;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+h1{
+    color: #6A5ACD;
+}
+
+.login-form{
+    width: 400px;
+    padding: 50px;
+}
+
+.login-form .form-group {
+    margin-bottom: 15px;
+}
+
+.login-form label {
+    display: block;
+    font-weight: bold;
+    color: #6A5ACD;
+}
+
+input#email, input#senha{
+    width: 100%;
+    height: 50px;
+    margin-top: 5px;
+    border-radius: 10px;
+    padding-left: 10px;
+    border: 2px solid #6A5ACD;
+}
+
+
+.login-button {
+    background-color: #6A5ACD;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.erro-mensagem {
+    color: #f00;
+    margin-top: 10px;
+}

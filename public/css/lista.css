@@ -1,0 +1,24 @@
+.container{
+    padding-top: 100px;
+}
+
+.col-lg{
+    margin: 30px 0;
+}
+
+.posts{
+    background-color: #fff;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+}
+
+.icons{
+    padding: 0 10px;
+}
+
+div h2{
+    font-size: 1.2rem;
+}

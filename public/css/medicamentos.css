@@ -1,0 +1,34 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.container{
+    padding-top: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div{
+    width: 100%;
+}
+
+input{
+    width: 100%;
+    height: 50px;
+    border-radius: 10px;
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+button{
+    width: 200px;
+    height: 50px;
+    border-radius: 10px;
+    background-color: #FF69B4;
+    border: none;
+    color: #fff;
+}
