@@ -1,0 +1,9 @@
+{
+    "port": 3002,
+    "user": "root",
+    "password": "12345678",
+    "host": "localhost",
+    "database": "mydb",
+    "dialect": "mysql",
+    "token": "NzUwNjQ1NjY5NjQ2NjY0NjY0.X0Q4VQ.4"
+}
