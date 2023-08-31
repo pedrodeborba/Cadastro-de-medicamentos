@@ -26,4 +26,21 @@ Usuario.autenticar = function(email, senha) {
         });
 };
 
+// Função para buscar usuário por email
+Usuario.getEmail = function(email) {
+    return Usuario.findOne({ where: { email: email } })
+        .then(user => {
+            if (user) {
+                // Usuário encontrado
+                return user;
+            } else {
+                // Usuário não encontrado
+                return null;
+            }
+        })
+        .catch(error => {
+            throw error;
+        });
+};
+
 module.exports = Usuario;
