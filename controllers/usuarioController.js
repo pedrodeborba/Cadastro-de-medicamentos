@@ -7,7 +7,6 @@ function getLogin(req, res) {
     res.render('login', { erro: null});
 }
 
-
 // const buildtoken = async (id) => {
 //     if (id > 0) {
 //       return jwt.sign({ id }, config.token, { expiresIn: 43200 });
@@ -37,7 +36,7 @@ async function autenticar(req, res) {
         .then(user => {
             if (user) {
 
-                const token = buildtoken(user.id);
+                // const token = buildtoken(user.id);
 
                 // ARMAZENAR O TOKEN NO LOCALSTORAGE
                 // Usar ele no cabecalho da requisicao de criar e listar medicamentos

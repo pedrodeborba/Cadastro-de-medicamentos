@@ -1,21 +1,22 @@
 <div class="container">
     <div class="row">
         <div class="col-lg">
-            <form action="/send" method="POST">
+            <form action="/editar/send" method="POST">
+                    <input type="hidden" name="id" value="<%= edit.id %>">
                 <div>
-                    <input type="text" name="nome" placeholder="Nome">
+                    <input type="text" name="nome" placeholder="Nome" value="<%= edit.nome %>">
                 </div>
             
                 <div>
-                    <input type="text" name="indicacao" placeholder="Indicação">
+                    <input type="text" name="indicacao" placeholder="Indicação" value="<%= edit.indicacao %>">
                 </div>
             
                 <div>
-                    <input type="text" name="modoUso" placeholder="Modo de Uso">
+                    <input type="text" name="modoUso" placeholder="Modo de Uso" value="<%= edit.modoUso %>">
                 </div>
             
                 <div>
-                    <input type="text" name="efeitosColaterais" placeholder="Efeitos Colaterais">
+                    <input type="text" name="efeitosColaterais" placeholder="Efeitos Colaterais" value="<%= edit.efeitosColaterais %>">
                 </div>
             
                 <div>

@@ -87,9 +87,25 @@ app.get('/delete/:id', function (req,res){
 });
 
 app.get('/editar/:id', function (req,res){
-    Medicamento.findAll().then(function(posts){
+    Medicamento.findOne({_id: req.params.id}).then((edit) =>{
         app.set('layout', './layouts/default/edit');
-        res.render('layouts/default/edit', { posts: posts });
+        res.render('layouts/default/edit', { edit: edit });
+    }).catch((err)=>{
+        res.send("Este medicamento nã oexiste! "+err);
+    });
+});
+
+app.post('/editar/send', function (req,res){
+    Medicamento.findOne({_id: req.body.id}).then((edit) =>{
+        edit.nome = req.body.nome
+        edit.indicacao = req.body.indicacao
+        edit.modoUso = req.body.modoUso
+        edit.efeitosColaterais = req.body.efeitosColaterais
+        edit.save().then(()=>{
+            res.redirect('/lista');
+        })
+    }).catch((err)=>{
+        res.send("Este medicamento nã oexiste! "+err);
     });
 });
 
