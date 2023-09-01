@@ -1,6 +1,6 @@
 const usuario = require("../models/usuarioModel");
 const crypto = require('crypto');
-const jwt = require('jsonwebtoken');
+// const jwt = require('jsonwebtoken');
 const config = require('../config/config.json');
 
 function getLogin(req, res) {
@@ -8,19 +8,19 @@ function getLogin(req, res) {
 }
 
 
-const buildtoken = async (id) => {
-    if (id > 0) {
-      return jwt.sign({ id }, config.token, { expiresIn: 43200 });
-    }
-    return false;
-};
+// const buildtoken = async (id) => {
+//     if (id > 0) {
+//       return jwt.sign({ id }, config.token, { expiresIn: 43200 });
+//     }
+//     return false;
+// };
 
-const validarToken = async (token) => jwt.verify(token, config.keys.token, (err) => {
-    if (err) {
-      return false;
-    }
-    return true;
-});
+// const validarToken = async (token) => jwt.verify(token, config.keys.token, (err) => {
+//     if (err) {
+//       return false;
+//     }
+//     return true;
+// });
   
 async function autenticar(req, res) {
     const email = req.body.email;

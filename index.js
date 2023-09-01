@@ -79,7 +79,11 @@ app.post('/send', function (req,res){
 
 //Rota para deletar Medicamento
 app.get('/delete:id', function (req,res){
-    Medicamento.destroy({where: {'id': req.params.id}});
+    Medicamento.destroy({where: {'id': req.params.id}}).then(function(){
+        res.redirect('/lista');
+    }).catch(function(err){
+        res.send("Este medicamento não existe! "+ err);
+    });
 });
 
 app.listen(port, () => {
