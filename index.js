@@ -78,11 +78,18 @@ app.post('/send', function (req,res){
 });
 
 //Rota para deletar Medicamento
-app.get('/delete:id', function (req,res){
+app.get('/delete/:id', function (req,res){
     Medicamento.destroy({where: {'id': req.params.id}}).then(function(){
         res.redirect('/lista');
     }).catch(function(err){
         res.send("Este medicamento não existe! "+ err);
+    });
+});
+
+app.get('/editar/:id', function (req,res){
+    Medicamento.findAll().then(function(posts){
+        app.set('layout', './layouts/default/edit');
+        res.render('layouts/default/edit', { posts: posts });
     });
 });
 
