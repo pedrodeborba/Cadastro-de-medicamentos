@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg text-center">
-                <form method="post" action="/cadastro" class="cadastro-form">
+                <form method="post" action="/usuarioRegister" class="cadastro-form">
                     <label>Sign Up</label>
                     <div class="form-group">
                         <input type="email" id="email" name="email" placeholder="Email..." required>
@@ -16,7 +16,7 @@
                     <div class="form-group">
                         <button type="submit" name="login" class="login-button">Login</button>
                     </div>
-                    <p>Já possui uma conta? <a href="/login">Logue agora</a></p>
+                    <p>Já possui uma conta? <a href="/usuarioLogin">Logue agora</a></p>
                     <% if (erro) { %>
                         <p class="erro-mensagem"><%= erro %></p>
                     <% } %>

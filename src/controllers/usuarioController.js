@@ -3,7 +3,7 @@ const crypto = require('crypto');
 // const jwt = require('jsonwebtoken');
 const config = require('../config/config.json');
 
-function getLogin(req, res) {
+function getUsuarioLogin(req, res) {
     res.render('login', { erro: null});
 }
 
@@ -51,4 +51,4 @@ async function autenticar(req, res) {
         });
 }
 
-module.exports = {getLogin, autenticar};
+module.exports = {getUsuarioLogin, autenticar};

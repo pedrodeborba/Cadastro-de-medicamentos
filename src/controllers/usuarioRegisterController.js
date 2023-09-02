@@ -1,7 +1,7 @@
 const Usuario = require("../models/usuarioModel");
 const crypto = require('crypto');
 
-function getCadastro(req, res) {
+function getUsuarioRegister(req, res) {
     res.render('cadastro', { erro: null});
 }
 
@@ -43,4 +43,4 @@ async function cadastrar (req, res) {
     }
 }
 
-module.exports = { getCadastro, cadastrar };
+module.exports = { getUsuarioRegister, cadastrar };

@@ -10,7 +10,7 @@ const Medicamento = require('./src/models/medicamentoModel');
 const medicamentoController = require('./src/controllers/medicamentoController');
 const homeController = require('./src/controllers/homeController');
 const usuarioController = require("./src/controllers/usuarioController");
-const cadastroController = require('./src/controllers/cadastroController');
+const usuarioRegisterController = require('./src/controllers/usuarioRegisterController');
 
 const app = express();
 const port = config.port;
@@ -25,25 +25,25 @@ app.use(bodyParser.json());
 app.set('layout', './layouts/default/index');
 
 app.get('/', (req, res) => {
-    res.redirect('/login');
+    res.redirect('/usuarioLogin');
 });
 
-app.get('/login', (res, req) =>{
+app.get('/usuarioLogin', (res, req) =>{
     app.set('layout', './layouts/default/login');
-    usuarioController.getLogin(res,req);
+    usuarioController.getUsuarioLogin(res,req);
 });
 
-app.post('/login', (req, res)=>{
+app.post('/usuarioLogin', (req, res)=>{
     usuarioController.autenticar(req, res);
 });
 
-app.get('/cadastro' , (req,res) =>{
+app.get('/usuarioRegister' , (req,res) =>{
     app.set('layout', './layouts/default/cadastro');
-    cadastroController.getCadastro(req,res);
+    usuarioRegisterController.getUsuarioRegister(req,res);
 });
 
-app.post('/cadastro', (req, res) => {
-    cadastroController.cadastrar(req,res);
+app.post('/usuarioRegister', (req, res) => {
+    usuarioRegisterController.cadastrar(req,res);
 })
 
 app.get('/home', (req,res) =>{
