@@ -4,6 +4,9 @@ const Medicamento = db.sequelize.define('medicamentos', {
     nome: { 
         type: db.Sequelize.STRING
     },
+    descricao: {
+        type: db.Sequelize.STRING
+    },
     indicacao: {
         type: db.Sequelize.STRING
     },

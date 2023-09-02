@@ -67,6 +67,7 @@ app.get('/lista', function (req,res){
 app.post('/send', function (req,res){
     Medicamento.create({
         nome: req.body.nome,
+        descricao: req.body.descricao,
         indicacao: req.body.indicacao,
         modoUso: req.body.modoUso,
         efeitosColaterais: req.body.efeitosColaterais
@@ -98,6 +99,7 @@ app.get('/editar/:id', function (req,res){
 app.post('/editar/send', function (req,res){
     Medicamento.findOne({_id: req.body.id}).then((edit) =>{
         edit.nome = req.body.nome
+        edit.descricao = req.body.descricao,
         edit.indicacao = req.body.indicacao
         edit.modoUso = req.body.modoUso
         edit.efeitosColaterais = req.body.efeitosColaterais
