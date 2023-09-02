@@ -35,13 +35,10 @@ async function autenticar(req, res) {
     usuario.autenticar(email, senha)
         .then(user => {
             if (user) {
-
                 // const token = buildtoken(user.id);
-
                 // ARMAZENAR O TOKEN NO LOCALSTORAGE
                 // Usar ele no cabecalho da requisicao de criar e listar medicamentos
                 // Usar a função validarToken PARA VERIFICAR SE O TOKEN É VALIDO, ela ta ali em cima 
-
                 res.redirect('/home');
             } else {
                 // Credenciais inválidas, renderizar página de login com mensagem de erro
@@ -53,7 +50,5 @@ async function autenticar(req, res) {
             res.render('login', { erro: 'Erro ao autenticar' });
         });
 }
-
-
 
 module.exports = {getLogin, autenticar};

@@ -1,21 +1,28 @@
-<form method="post" action="/cadastro" class="cadastro-form">
-    <div class="form-group">
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" placeholder="Email..." required>
+<div class="container d-flex justify-content-center align-items-center">
+    <div class="row">
+        <div class="col-lg text-center">
+            <h1>Registrar</h1>
+            <form method="post" action="/cadastro" class="cadastro-form">
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="Email..." required>
+                </div>
+                <div class="form-group">
+                    <label for="senha">Senha:</label>
+                    <input type="password" id="senha" name="senha" placeholder="Senha..." required>
+                </div>
+                <div class="form-group">
+                    <label for="confirmSenha">Confirmar senha:</label>
+                    <input type="password" id="senha" name="confirmSenha" placeholder="Confirmar Senha..." required>
+                </div>
+                <div class="form-group">
+                    <button type="submit" name="cadastro" class="cadastro-button">Registrar</button>
+                </div>
+                <p>Possui uma conta? <a href="/login">Logue agora!</a></p>
+                <% if (erro) { %>
+                    <p class="erro-mensagem"><%= erro %></p>
+                <% } %>
+            </form>
+        </div>
     </div>
-    <div class="form-group">
-        <label for="senha">Senha:</label>
-        <input type="password" id="senha" name="senha" placeholder="Senha..." required>
-    </div>
-    <div class="form-group">
-        <label for="confirmSenha">Confirmar senha:</label>
-        <input type="password" id="senha" name="ConfirmSenha" placeholder="Confirmar Senha..." required>
-    </div>
-    <div class="form-group">
-        <button type="submit" name="cadastro" class="cadastro-button">cadastro</button>
-    </div>
-    <p>Possui uma conta? <a href="/login">Logue agora!</a></p>
-    <% if (erro) { %>
-        <p class="erro-mensagem"><%= erro %></p>
-    <% } %>
-</form>
+</div>

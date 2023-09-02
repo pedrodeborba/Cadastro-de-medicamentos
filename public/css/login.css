@@ -3,22 +3,75 @@
     padding: 0;
     box-sizing: border-box;
 }
+img{
+    width: 100%;
+    height: 100%;
+}
 
-body {
-    font-family: Arial, sans-serif;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+h1{
+    font-size: 1em;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #000 !important;
+    font-weight: 600;
+}
+
+h2{
+    font-size: 1em;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #000 !important;
+    font-weight: 600;
+}
+.container{
     height: 100vh;
 }
-h1{
-    color: #6A5ACD;
+
+.row{
+    height: 500px;
+}
+
+.col-lg{
+    border: 2px solid #000;
+    border-radius: 20px;
+    padding: 20px;
+    width: 500px;
 }
 
 .login-form{
-    width: 400px;
+    width: 100%;
     padding: 50px;
+}
+
+.cadastro-form{
+    width: 100%;
+    padding: 50px;
+}
+
+input#email, input#senha{
+    width: 500px;
+    height: 50px;
+    margin-top: 5px;
+    border-radius: 10px;
+    padding-left: 10px;
+    border: 2px solid #000;
+}
+
+.login-button {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.cadastro-button{
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-top: 10px;
 }
 
 .login-form .form-group {
@@ -28,28 +81,16 @@ h1{
 .login-form label {
     display: block;
     font-weight: bold;
-    color: #6A5ACD;
+    color: #000;
 }
 
-input#email, input#senha{
-    width: 100%;
-    height: 50px;
-    margin-top: 5px;
-    border-radius: 10px;
-    padding-left: 10px;
-    border: 2px solid #6A5ACD;
-}
-
-.login-button {
-    background-color: #6A5ACD;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 3px;
-    cursor: pointer;
+.cadastro-form label {
+    display: block;
+    font-weight: bold;
+    color: #000;
 }
 
 .erro-mensagem {
     color: #f00;
     margin-top: 10px;
-}
+} 

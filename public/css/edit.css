@@ -15,7 +15,7 @@ div{
     width: 100%;
 }
 
-input{
+div input{
     width: 100%;
     height: 50px;
     border-radius: 10px;
@@ -24,11 +24,11 @@ input{
     border: 1px solid #ddd;
 }
 
-button{
+div button{
     width: 200px;
     height: 50px;
     border-radius: 10px;
-    background-color: #000;
+    background-color: #FF69B4;
     border: none;
     color: #fff;
 }

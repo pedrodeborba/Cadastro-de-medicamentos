@@ -91,7 +91,7 @@ app.get('/editar/:id', function (req,res){
         app.set('layout', './layouts/default/edit');
         res.render('layouts/default/edit', { edit: edit });
     }).catch((err)=>{
-        res.send("Este medicamento nã oexiste! "+err);
+        res.send("Este medicamento não existe! "+err);
     });
 });
 
@@ -105,7 +105,7 @@ app.post('/editar/send', function (req,res){
             res.redirect('/lista');
         })
     }).catch((err)=>{
-        res.send("Este medicamento nã oexiste! "+err);
+        res.send("Este medicamento não existe! "+err);
     });
 });
 
