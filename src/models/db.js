@@ -1,9 +1,12 @@
-const Sequelize = require ('sequelize');
-const defaultConfig = require('../config/config.json');
+const Sequelize = require('sequelize');
+const defaultConfig = require ('../config/config.json');
+
 const sequelize = new Sequelize(defaultConfig.database, defaultConfig.user, defaultConfig.password, {
     host: defaultConfig.host,
-    dialect: defaultConfig.dialect
-});
+    dialect: defaultConfig.dialect,
+    port: defaultConfig.port,
+    url: defaultConfig.url
+})
 
 sequelize.authenticate().then(function(){
     console.log("Conectado com sucesso!");

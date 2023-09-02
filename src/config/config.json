@@ -1,9 +1,9 @@
 {
-    "port": 3002,
+    "port": 7343,
     "user": "root",
-    "password": "12345678",
-    "host": "localhost",
-    "database": "mydb",
+    "password": "2fPxZHUWryn1Nn5RzDHC",
+    "host": "containers-us-west-186.railway.app",
+    "database": "railway",
     "dialect": "mysql",
     "token": "NzUwNjQ1NjY5NjQ2NjY0NjY0.X0Q4VQ.4"
 }
