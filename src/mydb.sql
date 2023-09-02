@@ -35,11 +35,6 @@ CREATE TABLE IF NOT EXISTS `mydb`.`medicamento` (
 )
 ENGINE = InnoDB;
 
-INSERT INTO `mydb`.`usuarios` (`email`, `senha`)
- VALUES(
-    'pedro-iborba@educar.rs.gov.br', '12345678'
-);
-
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS

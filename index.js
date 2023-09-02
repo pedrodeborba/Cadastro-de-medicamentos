@@ -1,16 +1,16 @@
 const express = require('express'); 
 const expressLayouts = require('express-ejs-layouts');
 const bodyParser = require ('body-parser'); 
-const config = require('./config/config.json');
+const config = require('./src/config/config.json');
 
 //Modulos
-const Medicamento = require('./models/medicamentoModel');
+const Medicamento = require('./src/models/medicamentoModel');
 
 //Controllers
-const medicamentoController = require('./controllers/medicamentoController');
-const homeController = require('./controllers/homeController');
-const usuarioController = require("./controllers/usuarioController");
-const cadastroController = require('./controllers/cadastroController');
+const medicamentoController = require('./src/controllers/medicamentoController');
+const homeController = require('./src/controllers/homeController');
+const usuarioController = require("./src/controllers/usuarioController");
+const cadastroController = require('./src/controllers/cadastroController');
 
 const app = express();
 const port = config.port;
