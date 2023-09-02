@@ -1,9 +1,26 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+section{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url("../img/background.webp");
+    background-size: 1920px;
+}
+
 .box{
     margin: 50px;
 }
 
 .btnEntrar{
     background-color: #fff;
+    color: #FF69B4;
     border: 2px solid #ddd;
     border-radius: 10px;
     width: 200px;
