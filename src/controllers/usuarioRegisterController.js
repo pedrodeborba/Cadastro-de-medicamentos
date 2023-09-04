@@ -34,7 +34,7 @@ async function cadastrar (req, res) {
         Usuario.create({ email, senha })
             .then(() => {
                 // Cadastro realizado com sucesso, redirecionar para a tela de login
-                res.redirect('/login');
+                res.redirect('/usuarioLogin');
             })
             .catch(error => {
                 console.error(error);
