@@ -1,7 +1,7 @@
 const Usuario = require("../models/usuarioModel");
 const crypto = require('crypto');
 
-function getUsuarioRegister(req, res) {
+function getRegister(req, res) {
     res.render('cadastro', { erro: null});
 }
 
@@ -25,22 +25,23 @@ async function cadastrar (req, res) {
         if (user) {
             // Usuário já cadastrado, renderizar página de cadastro com mensagem de erro
             res.render('cadastro', { erro: 'Email já cadastrado' });
+        }else{
+            senha = await crypto.createHash('md5').update(senha).digest('hex');
+
+
+            // Realizar o cadastro
+            Usuario.create({ email, senha })
+                .then(() => {
+                    // Cadastro realizado com sucesso, redirecionar para a tela de login
+                    res.redirect('/usuarioLogin');
+                })
+                .catch(error => {
+                    console.error(error);
+                    res.render('cadastro', { erro: 'Erro ao cadastrar' });
+                });
         }
 
-        senha = await crypto.createHash('md5').update(senha).digest('hex');
-
-
-        // Realizar o cadastro
-        Usuario.create({ email, senha })
-            .then(() => {
-                // Cadastro realizado com sucesso, redirecionar para a tela de login
-                res.redirect('/usuarioLogin');
-            })
-            .catch(error => {
-                console.error(error);
-                res.render('cadastro', { erro: 'Erro ao cadastrar' });
-            });
     }
 }
 
-module.exports = { getUsuarioRegister, cadastrar };
+module.exports = { getRegister, cadastrar };

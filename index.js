@@ -1,34 +1,45 @@
 const express = require('express'); 
 const expressLayouts = require('express-ejs-layouts');
 const bodyParser = require ('body-parser'); 
-const config = require('./src/config/config.json');
+const session = require ('express-session');
+const config = require('./config/config.json');
 
-//Modulos
-const Medicamento = require('./src/models/medicamentoModel');
+//Middleware
+const middleware = require ('./middlewares/middlewares');
+
+//Models
+const Medicamento = require('./models/medicamentoModel');
 
 //Controllers
-const medicamentoController = require('./src/controllers/medicamentoController');
-const homeController = require('./src/controllers/homeController');
-const usuarioController = require("./src/controllers/usuarioController");
-const usuarioRegisterController = require('./src/controllers/usuarioRegisterController');
+const medicamentoController = require('./controllers/medicamentoController');
+const homeController = require('./controllers/homeController');
+const usuarioController = require("./controllers/usuarioController");
+const registerController = require('./controllers/registerController');
 
 const app = express();
 const port = config.port;
 
-app.set('view engine', 'ejs');// declarando ejs como tempalte engine
+app.set('view engine', 'ejs');
 app.use(expressLayouts);
-app.use(express.static('public')); //public para adicionar css
+app.use(express.static('public')); 
 app.use(express.urlencoded({ extended: true }));
-app.use(bodyParser.urlencoded({extended: true})); //Configurando Body-Parser
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
-// Configurar layout globalmente
+app.use(session({ 
+    secret: "cadastrodemedicamentos",
+    resave: true,
+    saveUninitialized: true,
+    cookie: { secure: false }
+}));
+
 app.set('layout', './layouts/default/index');
 
-app.get('/', (req, res) => {
+// ====================================ROTAS=============================================================
+app.get('/', middleware.verifySpecialRoutes, (req, res) => {
     res.redirect('/usuarioLogin');
 });
 
-app.get('/usuarioLogin', (res, req) =>{
+app.get('/usuarioLogin', middleware.verifySpecialRoutes, (res,req) =>{
     app.set('layout', './layouts/default/login');
     usuarioController.getUsuarioLogin(res,req);
 });
@@ -37,27 +48,26 @@ app.post('/usuarioLogin', (req, res)=>{
     usuarioController.autenticar(req, res);
 });
 
-app.get('/usuarioRegister' , (req,res) =>{
+app.get('/usuarioRegister', middleware.verifySpecialRoutes, (req,res) =>{
     app.set('layout', './layouts/default/cadastro');
-    usuarioRegisterController.getUsuarioRegister(req,res);
+    registerController.getRegister(req,res);
 });
 
 app.post('/usuarioRegister', (req, res) => {
-    usuarioRegisterController.cadastrar(req,res);
+    registerController.cadastrar(req,res);
 })
 
-app.get('/home', (req,res) =>{
+app.get('/home', middleware.verifyAuth, (req,res) =>{
     app.set('layout', './layouts/default/home');
     homeController.getView(req,res);
 });
 
-//Formulario para adicionar medicamento
-app.get('/medicamentos', (req,res) =>{
+app.get('/medicamentos', middleware.verifyAuth, (req,res) =>{
     app.set('layout', './layouts/default/medicamentos');
     medicamentoController.getMedicamentos(req, res);
 });
 
-app.get('/lista', function (req,res){
+app.get('/lista', middleware.verifyAuth, function (req,res){
     Medicamento.findAll().then(function(posts){
         app.set('layout', './layouts/default/lista');
         res.render('layouts/default/lista', { pageTitle: 'Lista', posts: posts });
@@ -78,7 +88,6 @@ app.post('/send', function (req,res){
     })
 });
 
-//Rota para deletar Medicamento
 app.get('/delete/:id', function (req,res){
     Medicamento.destroy({where: {'id': req.params.id}}).then(function(){
         res.redirect('/lista');
@@ -109,6 +118,10 @@ app.post('/editar/send', function (req,res){
     }).catch((err)=>{
         res.send("Este medicamento não existe! "+err);
     });
+});
+
+app.get('/logout', middleware.verifyAuth, function (req,res){
+    usuarioController.logout(req,res);
 });
 
 app.listen(port, () => {
