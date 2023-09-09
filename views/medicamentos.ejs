@@ -35,6 +35,9 @@
                     </button>
                 </div>
             </form>
+            <% if (erro) { %>
+                <p class="erro-mensagem"><%= erro %></p>
+            <% } %>
         </div>
     </div>
 </div>

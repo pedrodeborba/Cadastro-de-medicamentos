@@ -24,7 +24,6 @@ input{
     border: 1px solid #ddd;
 }
 
-
 #enviar{
     width: 200px;
     height: 50px;
@@ -33,3 +32,8 @@ input{
     border: none;
     color: #fff;
 }
+
+.erro-mensagem {
+    color: #f00;
+    margin-top: 10px;
+} 

@@ -13,7 +13,7 @@ async function autenticar(req, res) {
   //localStorage.setItem('token', token);
 
   if (!email || !senha) {
-    res.render("login", { content: "login", erro: "Preencha todos os campos" });
+    res.render("layouts/default/login", { content: "login", erro: "Preencha todos os campos" });
   }
 
   senha = await crypto.createHash("md5").update(senha).digest("hex");

@@ -74,19 +74,7 @@ app.get('/lista', middleware.verifyAuth, function (req,res){
     });
 });
 
-app.post('/send', function (req,res){
-    Medicamento.create({
-        nome: req.body.nome,
-        descricao: req.body.descricao,
-        indicacao: req.body.indicacao,
-        modoUso: req.body.modoUso,
-        efeitosColaterais: req.body.efeitosColaterais
-    }).then(function(){
-        res.redirect('/lista'); 
-    }).catch(function(err){
-        res.send("Erro ao cadastrar medicamento: "+ err);
-    })
-});
+app.post('/send', medicamentoController.sendMedicamento);
 
 app.get('/delete/:id', function (req,res){
     Medicamento.destroy({where: {'id': req.params.id}}).then(function(){

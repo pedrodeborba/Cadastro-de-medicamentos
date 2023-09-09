@@ -1,5 +1,5 @@
 function getView(req, res) { 
-    res.render('layouts/default/home', {  pageTitle: 'Home'});
+    res.render('layouts/default/home');
 }
 
 function btnEntrar(req, res) { 

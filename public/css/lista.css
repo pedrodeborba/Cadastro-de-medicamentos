@@ -16,6 +16,8 @@
 .medication{
     width: 400px;
     margin: 5vh 5vw 5vh 5vw;
+    border: 7px solid #0A9781;
+    border-radius: 10px;
 }
 
 .posts{
