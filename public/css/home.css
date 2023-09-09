@@ -15,7 +15,16 @@ img{
     margin-top: 30px;
 }
 
+#radius_{
+    height: 200px;
+    margin: 30px 0 30px 0;
+}
+
 #radius img{
+    border-radius: 10px;
+}
+
+#radius_ img{
     border-radius: 10px;
 }
 
@@ -37,10 +46,4 @@ img{
     margin: 0;
     font-size: 1.2rem;
     font-weight: 600;
-}
-
-#footer{
-    margin-top: 50px;
-    background-color: #0A9781;
-    color: #fff;
 }

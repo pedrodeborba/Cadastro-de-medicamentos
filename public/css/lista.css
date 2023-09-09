@@ -1,24 +1,27 @@
-section{
-    width: 100%;
-    height: 100vh;
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.box{
+    padding: 20px;
+    margin-top: 150px;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    background: url("../img/background.webp");
-    background-size: 1920px;
+    flex-wrap: wrap;
 }
 
-.container{
-    padding-top: 100px;
-}
-
-.col-lg{
-    margin: 30px 0;
+.medication{
+    width: 400px;
+    margin: 5vh 5vw 5vh 5vw;
 }
 
 .posts{
     background-color: #fff;
     width: 100%;
+    height: 50px;
     padding: 10px;
     border: 1px solid #ddd;
     display: flex;
