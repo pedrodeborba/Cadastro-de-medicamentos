@@ -1,4 +1,4 @@
-const Usuario = require("../models/usuarioModel");
+ const Usuario = require("../models/usuarioModel");
 const crypto = require("crypto");
 
 function getUsuarioLogin(req, res) {

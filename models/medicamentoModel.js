@@ -5,16 +5,16 @@ const Medicamento = db.sequelize.define('medicamentos', {
         type: db.Sequelize.STRING
     },
     descricao: {
-        type: db.Sequelize.STRING
+        type: db.Sequelize.TEXT
     },
     indicacao: {
-        type: db.Sequelize.STRING
+        type: db.Sequelize.TEXT
     },
     modoUso: {
-        type: db.Sequelize.STRING
+        type: db.Sequelize.TEXT
     },
     efeitosColaterais: {
-        type: db.Sequelize.STRING
+        type: db.Sequelize.TEXT
     }
 });
 
