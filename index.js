@@ -1,8 +1,8 @@
+require ('dotenv').config();
 const express = require('express'); 
 const expressLayouts = require('express-ejs-layouts');
 const bodyParser = require ('body-parser'); 
 const session = require ('express-session');
-const config = require('./config/config.json');
 
 //Middleware
 const middleware = require ('./middlewares/middlewares');
@@ -17,7 +17,7 @@ const usuarioController = require("./controllers/usuarioController");
 const registerController = require('./controllers/registerController');
 
 const app = express();
-const port = config.port;
+const port = process.env.DB_PORT;
 
 app.set('view engine', 'ejs');
 app.use(expressLayouts);
@@ -26,7 +26,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(session({ 
-    secret: "cadastrodemedicamentos",
+    secret: process.env.SESSION_SECRET,
     resave: true,
     saveUninitialized: true,
     cookie: { secure: false }
@@ -84,28 +84,49 @@ app.get('/delete/:id', function (req,res){
     });
 });
 
-app.get('/editar/:id', function (req,res){
-    Medicamento.findOne({_id: req.params.id}).then((edit) =>{
-        app.set('layout', './layouts/default/edit');
-        res.render('layouts/default/edit', { edit: edit });
-    }).catch((err)=>{
-        res.send("Este medicamento não existe! "+err);
+app.get('/editar/:id', function (req, res) {
+    const medicationId = req.params.id;
+    Medicamento.findByPk(medicationId).then((medication) => {
+        if (!medication) {
+            res.redirect('/lista');
+        } else {
+            app.set('layout', './layouts/default/edit');
+            res.render('layouts/default/edit', { edit: medication });
+        }
+    }).catch((err) => {
+        res.send("Este medicamento não existe! " + err);
     });
 });
 
-app.post('/editar/send', function (req,res){
-    Medicamento.findOne({_id: req.body.id}).then((edit) =>{
-        edit.nome = req.body.nome
-        edit.descricao = req.body.descricao,
-        edit.indicacao = req.body.indicacao
-        edit.modoUso = req.body.modoUso
-        edit.efeitosColaterais = req.body.efeitosColaterais
-        edit.save().then(()=>{
-            res.redirect('/lista');
+app.post('/editar/send', function (req, res) {
+    const medicationId = req.body.id;
+    Medicamento.findByPk(medicationId)
+        .then((medication) => {
+            if (!medication) {
+                res.redirect('/lista');
+            } else {
+                medication.nome = req.body.nome;
+                medication.descricao = req.body.descricao;
+                medication.valor = req.body.valor;
+                medication.quantidade_em_estoque = req.body.quantidade_em_estoque;
+                medication.categoria = req.body.categoria;
+                medication.imagem = req.body.imagem;
+
+                medication
+                    .save()
+                    .then(() => {
+                        res.redirect('/lista');
+                    })
+                    .catch((err) => {
+                        console.error(err);
+                        res.send('Erro ao atualizar: ' + err);
+                    });
+            }
         })
-    }).catch((err)=>{
-        res.send("Este medicamento não existe! "+err);
-    });
+        .catch((err) => {
+            console.error(err);
+            res.send('Erro ao buscar medicamento: ' + err);
+        });
 });
 
 app.get('/logout', middleware.verifyAuth, function (req,res){
