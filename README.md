@@ -10,7 +10,7 @@
 
 **Cadastro de Medicamentos** 🚀. 
 
-- Para visitar a aplicação <a href="https://github.com/johnatas-henrique/johnatas-henrique/blob/master/curriculo.pdf" target="_blank">clique aqui</a>.
+- Para visitar a aplicação <a href="https://cadastro-de-medicamentos.onrender.com/" target="_blank">clique aqui</a>.
 
   <img align="right" alt="GIF" src="https://i.pinimg.com/originals/e4/26/70/e426702edf874b181aced1e2fa5c6cde.gif" width="400px" />
 
