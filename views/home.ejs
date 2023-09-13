@@ -1,55 +1,65 @@
 <div class="container" style="padding-top: 100px; ">
   <div class="row">
-      <div class="col-lg-6">
-          <div id="carouselExampleIndicators" class="carousel slide">
-              <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-              </div>
-              <div class="carousel-inner">
-                <div class="carousel-item active" id="radius">
-                  <img src="/img/Medication.png" class="d-block w-100">
-                </div>
-                <div class="carousel-item" id="radius">
-                  <img src="/img/1.png" class="d-block w-100">
-                </div>
-                <div class="carousel-item" id="radius">
-                  <img src="/img/2.png" class="d-block w-100">
-                </div>
-              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-              </button>
-              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-              </button>
+    <div class="col-lg-6">
+      <div id="carouselExampleIndicators" class="carousel slide">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+            aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+            aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+            aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active" id="radius">
+            <img src="/img/Medication.png" class="d-block w-100">
           </div>
+          <div class="carousel-item" id="radius">
+            <img src="/img/1.png" class="d-block w-100">
+          </div>
+          <div class="carousel-item" id="radius">
+            <img src="/img/2.png" class="d-block w-100">
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
         </div>
       </div>
+    </div>
 
-      <div class="col-lg-6 d-flex justify-content-center align-items-center" style="margin-top: 20px;">
-        <form action="/medicamentos" method="GET">
-          <button type="submit" class="btnEntrar">
-              <svg xmlns="http://www.w3.org/2000/svg" width="50" height="70" fill="#0A9781" class="bi bi-file-earmark-plus" viewBox="0 0 16 16" style="margin-right: 10px;">
-                  <path d="M8 6.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V11a.5.5 0 0 1-1 0V9.5H6a.5.5 0 0 1 0-1h1.5V7a.5.5 0 0 1 .5-.5z"/>
-                  <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z"/>
-              </svg>
-              <p>Registrar</p>
-          </button>
-        </form>
+    <div class="col-lg-6 d-flex justify-content-center align-items-center" style="margin-top: 20px;">
+      <form action="/medicamentos" method="GET">
+        <button type="submit" class="btnEntrar">
+          <svg xmlns="http://www.w3.org/2000/svg" width="50" height="70" fill="#0A9781" class="bi bi-file-earmark-plus"
+            viewBox="0 0 16 16" style="margin-right: 10px;">
+            <path
+              d="M8 6.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V11a.5.5 0 0 1-1 0V9.5H6a.5.5 0 0 1 0-1h1.5V7a.5.5 0 0 1 .5-.5z" />
+            <path
+              d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z" />
+          </svg>
+          <p>Registrar</p>
+        </button>
+      </form>
 
-        <form action="/lista" method="GET">
-          <button type="submit" class="btnEntrar">
-              <svg xmlns="http://www.w3.org/2000/svg" width="50" height="70" fill="#0A9781" class="bi bi-list-ul" viewBox="0 0 16 16" style="margin-right: 25px;">
-                  <path fill-rule="evenodd" d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
-              </svg>
-              <p>Salvos</p>
-          </button>
-        </form>
+      <form action="/lista" method="GET">
+        <button type="submit" class="btnEntrar">
+          <svg xmlns="http://www.w3.org/2000/svg" width="50" height="70" fill="#0A9781" class="bi bi-list-ul"
+            viewBox="0 0 16 16" style="margin-right: 25px;">
+            <path fill-rule="evenodd"
+              d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
+          </svg>
+          <p>Salvos</p>
+        </button>
+      </form>
 
-      </div>
+    </div>
   </div>
 
   <div class="row" style="margin-top: 30px">
@@ -79,4 +89,4 @@
       <img src="/img/8.png">
     </div>
   </div>
-</div>
+  </div>

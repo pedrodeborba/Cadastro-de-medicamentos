@@ -1,7 +1,8 @@
 const Usuario = require("../models/usuarioModel");
 const crypto = require('crypto');
 
-function getRegister(req, res) {
+function getRegister(req, res, app) {
+    app.set('layout', './layouts/default/cadastro');
     res.render('layouts/default/cadastro', { erro: null});
 }
 

@@ -1,7 +1,10 @@
  const Usuario = require("../models/usuarioModel");
 const crypto = require("crypto");
+const express = require ('express');
+const app = express();
 
-function getUsuarioLogin(req, res) {
+function getUsuarioLogin(req, res, app) {
+  app.set('layout', './layouts/default/login');
   res.render("login", { erro: null });
 }
 

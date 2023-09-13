@@ -4,13 +4,13 @@ const expressLayouts = require('express-ejs-layouts');
 const bodyParser = require ('body-parser'); 
 const session = require ('express-session');
 
-//Middleware
+// ====================================Middleware=============================================================
 const middleware = require ('./middlewares/middlewares');
 
-//Models
+// ====================================Models=============================================================
 const Medicamento = require('./models/medicamentoModel');
 
-//Controllers
+// ====================================Controllers=============================================================
 const medicamentoController = require('./controllers/medicamentoController');
 const homeController = require('./controllers/homeController');
 const usuarioController = require("./controllers/usuarioController");
@@ -35,103 +35,31 @@ app.use(session({
 app.set('layout', './layouts/default/index');
 
 // ====================================ROTAS=============================================================
-app.get('/', middleware.verifySpecialRoutes, (req, res) => {
-    res.redirect('/usuarioLogin');
-});
+app.get('/', middleware.verifySpecialRoutes, (req, res) => { res.redirect('/usuarioLogin') });
 
-app.get('/usuarioLogin', middleware.verifySpecialRoutes, (res,req) =>{
-    app.set('layout', './layouts/default/login');
-    usuarioController.getUsuarioLogin(res,req);
-});
+app.get('/usuarioLogin', middleware.verifySpecialRoutes, (res,req) =>{ usuarioController.getUsuarioLogin(res,req,app) }); 
 
-app.post('/usuarioLogin', (req, res)=>{
-    usuarioController.autenticar(req, res);
-});
+app.post('/usuarioLogin', usuarioController.autenticar);
 
-app.get('/usuarioRegister', middleware.verifySpecialRoutes, (req,res) =>{
-    app.set('layout', './layouts/default/cadastro');
-    registerController.getRegister(req,res);
-});
+app.get('/usuarioRegister', middleware.verifySpecialRoutes, (req,res) =>{ registerController.getRegister(req,res,app) });
 
-app.post('/usuarioRegister', (req, res) => {
-    registerController.cadastrar(req,res);
-})
+app.post('/usuarioRegister', registerController.cadastrar);
 
-app.get('/home', middleware.verifyAuth, (req,res) =>{
-    app.set('layout', './layouts/default/home');
-    homeController.getView(req,res);
-});
+app.get('/home', middleware.verifyAuth, (req,res) =>{ homeController.getView(req,res,app) });
 
-app.get('/medicamentos', middleware.verifyAuth, (req,res) =>{
-    app.set('layout', './layouts/default/medicamentos');
-    medicamentoController.getMedicamentos(req, res);
-});
+app.get('/medicamentos', middleware.verifyAuth, (req,res) =>{ medicamentoController.getMedicamentos(req,res,app) });
 
-app.get('/lista', middleware.verifyAuth, function (req,res){
-    Medicamento.findAll().then(function(posts){
-        app.set('layout', './layouts/default/lista');
-        res.render('layouts/default/lista', { pageTitle: 'Lista', posts: posts });
-    });
-});
+app.get('/lista', middleware.verifyAuth, (req,res)=>{ medicamentoController.listarMedicamento(req,res,app) });
 
 app.post('/send', medicamentoController.sendMedicamento);
 
-app.get('/delete/:id', function (req,res){
-    Medicamento.destroy({where: {'id': req.params.id}}).then(function(){
-        res.redirect('/lista');
-    }).catch(function(err){
-        res.send("Este medicamento não existe! "+ err);
-    });
-});
+app.get('/delete/:id', medicamentoController.deleteMedicamento);
 
-app.get('/editar/:id', function (req, res) {
-    const medicationId = req.params.id;
-    Medicamento.findByPk(medicationId).then((medication) => {
-        if (!medication) {
-            res.redirect('/lista');
-        } else {
-            app.set('layout', './layouts/default/edit');
-            res.render('layouts/default/edit', { edit: medication });
-        }
-    }).catch((err) => {
-        res.send("Este medicamento não existe! " + err);
-    });
-});
+app.get('/editar/:id', (req,res) => { medicamentoController.editarMedicamento(req,res,app) });
 
-app.post('/editar/send', function (req, res) {
-    const medicationId = req.body.id;
-    Medicamento.findByPk(medicationId)
-        .then((medication) => {
-            if (!medication) {
-                res.redirect('/lista');
-            } else {
-                medication.nome = req.body.nome;
-                medication.descricao = req.body.descricao;
-                medication.valor = req.body.valor;
-                medication.quantidade_em_estoque = req.body.quantidade_em_estoque;
-                medication.categoria = req.body.categoria;
-                medication.imagem = req.body.imagem;
+app.post('/editar/send', medicamentoController.editSendMedicamento);
 
-                medication
-                    .save()
-                    .then(() => {
-                        res.redirect('/lista');
-                    })
-                    .catch((err) => {
-                        console.error(err);
-                        res.send('Erro ao atualizar: ' + err);
-                    });
-            }
-        })
-        .catch((err) => {
-            console.error(err);
-            res.send('Erro ao buscar medicamento: ' + err);
-        });
-});
-
-app.get('/logout', middleware.verifyAuth, function (req,res){
-    usuarioController.logout(req,res);
-});
+app.get('/logout', middleware.verifyAuth, usuarioController.logout);
 
 app.listen(port, () => {
     console.log(`Servidor rodando em http://localhost:${port}`);
