@@ -1,7 +1,5 @@
- const Usuario = require("../models/usuarioModel");
+const Usuario = require("../models/usuarioModel");
 const crypto = require("crypto");
-const express = require ('express');
-const app = express();
 
 function getUsuarioLogin(req, res, app) {
   app.set('layout', './layouts/default/login');
@@ -11,9 +9,6 @@ function getUsuarioLogin(req, res, app) {
 async function autenticar(req, res) {
   const email = req.body.email;
   let senha = req.body.senha;
-
-  //const token = config.token; 
-  //localStorage.setItem('token', token);
 
   if (!email || !senha) {
     res.render("layouts/default/login", { content: "login", erro: "Preencha todos os campos" });
